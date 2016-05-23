@@ -15,12 +15,10 @@
     }
   ],
   "backends": [
-{% for dependency in CP_DEPENDENCIES | from_json %}
-    {
+{% for dependency in CP_DEPENDENCIES | from_json %} {% if dependency.onChange | default("/stop.sh") != "ignore" %} {
       "name": "{{ dependency.name }}",
       "poll": {{ dependency.poll | default(10) }},
       "onChange": "{{ dependency.onChange | default("/stop.sh") }}"
-    }
-{% endfor %}
+    } {% endif %} {% endfor %}
   ]
 }

@@ -6,7 +6,7 @@ echo "Discovery endpoint: ${CONSUL:-none}"
 if [ -z "$CONSUL" ]; then
   exec "${CP_SERVICE_CMD:-/run.sh}"
 else
-  envtpl /etc/containerpilot.json.tpl
+  cat /etc/containerpilot.json.tpl | envtpl | sed 's/}\s*{/}, {/g' > /etc/containerpilot.json
   echo ---------------------------------------------------------------------------
   echo ContainerPilot conffile
   cat /etc/containerpilot.json
