@@ -2,7 +2,7 @@ FROM alpine:3.3
 MAINTAINER Nicolas Degory <ndegory@axway.com>
 
 RUN apk update && \
-    apk --no-cache add python ca-certificates curl bash && \
+    apk --no-cache add python ca-certificates curl bash jq && \
     apk --virtual envtpl-deps add --update py-pip python-dev && \
     curl https://bootstrap.pypa.io/ez_setup.py | python && \
     pip install envtpl && \
@@ -16,3 +16,8 @@ RUN apk --virtual builddeps add --update binutils && \
     mv ./containerpilot /bin/ && \
     rm /tmp/cb.tar.gz && \
     apk del builddeps && rm -rf /var/cache/apk/*
+
+ENV CONTAINERPILOT=file:///etc/containerpilot.json
+COPY containerpilot.json /etc/containerpilot.json.tpl
+COPY start.sh /start.sh
+COPY stop.sh /stop.sh

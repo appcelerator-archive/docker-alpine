@@ -1,0 +1,26 @@
+{
+  "consul": "{{ CONSUL }}",
+  "logging": {
+    "level": "{{ CP_LOG_LEVEL | default("ERROR") }}",
+    "format": "text",
+    "output": "stdout"
+  },
+  "services": [
+    {
+      "name": "{{ CP_SERVICE_NAME }}",
+      "port": {{ CP_SERVICE_PORT }},
+      "health": "pidof {{ CP_SERVICE_BIN }}",
+      "poll": {{ CP_POLL | default(3) }},
+      "ttl": {{ CP_TTL | default(20) }} 
+    }
+  ],
+  "backends": [
+{% for dependency in CP_DEPENDENCIES | from_json %}
+    {
+      "name": "{{ dependency.name }}",
+      "poll": {{ dependency.poll | default(10) }},
+      "onChange": "{{ dependency.onChange | default("/stop.sh") }}"
+    }
+{% endfor %}
+  ]
+}
