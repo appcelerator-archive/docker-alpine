@@ -12,5 +12,5 @@ for service in $(echo $CP_DEPENDENCIES | jq  -r '. | map(.name) | .[]'); do
 done
 if [ "$ready" == "0" ]; then
   echo "At least one dependency is not ready: Send SIGTERM (15) signal"
-  kill SIGTERM $(pidof $CP_SERVICE_BIN)
+  kill SIGTERM $(pidof ${CP_SERVICE_BIN:-$CP_SERVICE_NAME})
 fi

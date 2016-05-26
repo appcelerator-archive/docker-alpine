@@ -15,6 +15,8 @@ To enable ContainerPilot, add the following variables:
 
 This example will have influxdb and amp-log-agent as dependencies to a svcName service, the pid will be check on a binary called binName.
 
+By default the health command is ```pidof $CP_SERVICE_BIN```. To override it, you can set CP_SERVICE_HEALTH_CMD.
+
 ### ContainerPilot default values
 
 Log level default value is ERROR, it can be overriden with the environment variable CP_LOG_LEVEL.

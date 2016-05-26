@@ -9,7 +9,7 @@
     {
       "name": "{{ CP_SERVICE_NAME }}",
       "port": {{ CP_SERVICE_PORT }},
-      "health": "pidof {{ CP_SERVICE_BIN }}",
+      "health": {% if CP_SERVICE_HEALTH_CMD is defined %}"{{ CP_SERVICE_HEALTH_CMD }}"{% else %}"pidof {{ CP_SERVICE_BIN | default(CP_SERVICE_NAME) }}"{% endif %},
       "poll": {{ CP_POLL | default(3) }},
       "ttl": {{ CP_TTL | default(20) }} 
     }
