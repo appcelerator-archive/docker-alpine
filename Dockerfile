@@ -12,7 +12,6 @@ ENV CONTAINER_PILOT_VERSION 2.1.0
 RUN apk --virtual builddeps add --update binutils && \
     curl -Lo /tmp/cb.tar.gz https://github.com/joyent/containerpilot/releases/download/$CONTAINER_PILOT_VERSION/containerpilot-$CONTAINER_PILOT_VERSION.tar.gz && \
     tar xzf /tmp/cb.tar.gz && \
-    strip ./containerpilot && \
     mv ./containerpilot /bin/ && \
     rm /tmp/cb.tar.gz && \
     apk del builddeps && rm -rf /var/cache/apk/*
