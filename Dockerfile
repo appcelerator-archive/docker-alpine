@@ -6,7 +6,7 @@ RUN apk update && \
     apk --virtual envtpl-deps add --update py-pip python-dev && \
     curl https://bootstrap.pypa.io/ez_setup.py | python && \
     pip install envtpl && \
-    apk del envtpl-deps && rm -rf /var/cache/apk/*
+    apk del envtpl-deps && rm -rf /var/cache/apk/* /setuptools-*.zip
 
 ENV CONTAINER_PILOT_VERSION 2.1.0
 RUN apk --virtual builddeps add --update binutils && \
