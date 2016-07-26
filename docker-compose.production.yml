@@ -1,0 +1,8 @@
+version: "2"
+services:
+  alpine:
+    image: appcelerator/alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /bin/true

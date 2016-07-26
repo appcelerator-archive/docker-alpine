@@ -1,0 +1,10 @@
+version: "2"
+services:
+  sut:
+    image: appcelerator/alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./docker-compose.test.sh:/bin/docker-compose.test.sh
+    command: /bin/docker-compose.test.sh
