@@ -1,7 +1,7 @@
 version: "2"
 services:
   sut:
-    image: appcelerator/alpine
+    image: appcelerator/sut
     build:
       context: .
       dockerfile: Dockerfile
