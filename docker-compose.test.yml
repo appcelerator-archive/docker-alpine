@@ -5,6 +5,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ./sut:/usr/local/sut
     command: [/usr/local/sut/sut.sh]

@@ -1,5 +1,15 @@
 #!/bin/bash
 
+echo -n "Check system release...   "
+sv=$(cat /etc/alpine-release)
+echo "$sv" | egrep -q "^[0-9]\.[0-9]\.[0-9]$"
+if [[ $? -ne 0 ]]; then
+  echo "failed"
+  echo "$sv"
+  exit 1
+fi
+printf "%-20s[OK]\n" "($sv)"
+
 echo -n "Test python version...    "
 pv=$(python -V 2>&1)
 if [[ $? -ne 0 || -z "$pv" ]]; then

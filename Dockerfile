@@ -10,3 +10,5 @@ RUN apk update && \
     curl https://bootstrap.pypa.io/ez_setup.py | python && \
     pip install envtpl && \
     apk del envtpl-deps && rm -rf /var/cache/apk/* /setuptools-*.zip
+
+COPY sut /usr/local/sut
