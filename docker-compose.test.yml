@@ -6,5 +6,5 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./test:/usr/local/test
-    command: [/usr/local/test/docker-compose.test.sh]
+      - ./sut:/usr/local/sut
+    command: [/usr/local/sut/sut.sh]
