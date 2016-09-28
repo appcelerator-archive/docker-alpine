@@ -6,6 +6,7 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
     echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 RUN apk update && \
+    apk upgrade && \
     apk --no-cache add python ca-certificates curl wget bash jq gosu@testing && \
     apk --virtual envtpl-deps add --update py-pip python-dev && \
     curl https://bootstrap.pypa.io/ez_setup.py | python && \
