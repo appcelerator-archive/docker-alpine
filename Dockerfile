@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.5
 MAINTAINER Nicolas Degory <ndegory@axway.com>
 
 RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
@@ -8,7 +8,7 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
 RUN apk update && \
     apk upgrade && \
     apk --no-cache add python ca-certificates curl wget bash jq gosu@testing && \
-    apk --virtual envtpl-deps add --update py-pip python-dev && \
+    apk --virtual envtpl-deps add --update py2-pip python-dev && \
     curl https://bootstrap.pypa.io/ez_setup.py | python && \
     pip install envtpl && \
     apk del envtpl-deps && rm -rf /var/cache/apk/* /setuptools-*.zip
