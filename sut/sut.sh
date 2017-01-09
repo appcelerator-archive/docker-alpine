@@ -10,15 +10,6 @@ if [[ $? -ne 0 ]]; then
 fi
 printf "%-20s[OK]\n" "($sv)"
 
-echo -n "Test python version...    "
-pv=$(python -V 2>&1)
-if [[ $? -ne 0 || -z "$pv" ]]; then
-  echo
-  echo "failed"
-  exit 1
-fi
-printf "%-20s[OK]\n" "($pv)"
-
 echo -n "Test jq version...        "
 jqv=$(jq --version)
 if [[ $? -ne 0 || -z "$jqv" ]]; then

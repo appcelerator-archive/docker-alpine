@@ -7,10 +7,9 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
 
 RUN apk update && \
     apk upgrade && \
-    apk --no-cache add python ca-certificates curl wget bash jq gosu@testing && \
-    apk --virtual envtpl-deps add --update py2-pip python-dev && \
-    curl https://bootstrap.pypa.io/ez_setup.py | python && \
-    pip install envtpl && \
-    apk del envtpl-deps && rm -rf /var/cache/apk/* /setuptools-*.zip
+    apk --no-cache add ca-certificates curl wget bash jq gosu@testing && \
+    curl -o /usr/bin/envtpl -L https://github.com/subfuzion/envtpl/blob/master/envtpl?raw=true && \
+    chmod a+x /usr/bin/envtpl && \
+    rm -rf /var/cache/apk/*
 
 COPY sut /usr/local/sut
