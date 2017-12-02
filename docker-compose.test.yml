@@ -1,8 +1,16 @@
 version: "2"
 services:
-  sut:
-    image: appcelerator/sut
+  alpine:
+    image: appcelerator/alpine
     build:
       context: .
       dockerfile: Dockerfile
-    command: [/usr/local/sut/sut.sh]
+    command: ["true"]
+  sut:
+    image: appcelerator/sut
+    depends_on:
+      - alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.sut
+    command: ["/usr/local/sut/sut.sh"]

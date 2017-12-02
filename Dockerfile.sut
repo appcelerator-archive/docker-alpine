@@ -1,0 +1,2 @@
+FROM appcelerator/alpine:latest
+COPY sut /usr/local/sut
