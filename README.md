@@ -13,4 +13,4 @@ The edge/main and edge/testing repositories are available for package installati
 - 20160928 (3.4)
 - 3.5, 3.5.2
 - 3.6, `3.6.0`
-- 3.7, `3.7.0`, latest
+- 3.7, `3.7.2`, latest
